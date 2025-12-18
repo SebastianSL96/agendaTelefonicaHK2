@@ -27,15 +27,15 @@ public class MainAgenda {
                         String a = sc.nextLine();
                         System.out.print("Teléfono: ");
                         String t = sc.nextLine();
-                        agenda.añadirContacto(new Contacto(n, a, t));
+                        agenda.agregarContacto(new Contacto(n, a, t));
                     }
-                    case 2 -> agenda.listarContactos();
+                    case 2 -> agenda.listarContacto();
                     case 3 -> {
                         System.out.print("Nombre: ");
                         String n = sc.nextLine();
                         System.out.print("Apellido: ");
                         String a = sc.nextLine();
-                        agenda.buscaContacto(n, a);
+                        agenda.buscarContacto(n, a);
                     }
                     case 4 -> {
                         System.out.print("Nombre: ");
