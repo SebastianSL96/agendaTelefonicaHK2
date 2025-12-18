@@ -49,4 +49,48 @@ public class Agenda {
     public List<Contacto> getAgenda() {
         return agenda;
     }
+
+    //Aqui metodo eliminar con remove(el remove por defecto busca)
+    public void eliminarContacto(Contacto c) {
+
+        if (agenda.remove(c)) {
+            System.out.println("Contacto eliminado");
+        } else {
+            System.out.println("El contacto no existe");
+        }
+
+
+    }
+    //recorre la lista agenda verifica que coincidan nombre y apellid
+    //cambia el numero de telefono
+    public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
+
+        for (Contacto c : agenda) {
+
+            if (c.getNombre().equalsIgnoreCase(nombre)
+                    && c.getApellido().equalsIgnoreCase(apellido)) {
+
+                c.setTelefono(nuevoTelefono);
+                System.out.println("Teléfono modificado correctamente");
+                return;
+            }
+        }
+
+        System.out.println("Contacto no encontrado");
+    }
+    //METODOS DE agenda llena solo compara el tamaño
+
+    public boolean agendaLlena() {
+        return agenda.size() >= 10;
+    }
+
+    public int espacioLibres() {
+        return 10 - agenda.size();
+    }
+
+
+
+
+
+
 }
