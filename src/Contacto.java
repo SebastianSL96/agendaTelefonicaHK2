@@ -1,4 +1,4 @@
-public class Contactos {
+public class Contacto {
 
     // Atributos de los contactos
     private String nombre;
@@ -6,7 +6,7 @@ public class Contactos {
     private String telefono;
 
     // Constructor que valida los parametros al crear el contacto
-    public Contactos(String nombre, String apellido, String telefono) {
+    public Contacto(String nombre, String apellido, String telefono) {
 
         // El if valida el nombre no puede ser null ni vacio
         if (nombre == null || nombre.trim().isEmpty()) {
@@ -19,7 +19,7 @@ public class Contactos {
         }
 
         // Valida que el telefono tenga 10 numeros
-        if (telefono.matches("\\d{10}")) {
+        if (!telefono.matches("\\d{10}")) {
             throw new IllegalArgumentException("Telefono debe tener 10 digitos");
         }
     }
@@ -45,14 +45,14 @@ public class Contactos {
         if (o== null || getClass() !=o.getClass()) return false;
 
         //Comparacion de nombres y apellidos
-        Contactos contacto =(Contactos) o;
+        Contacto contacto =(Contacto) o;
         return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
 
     }
 
     @Override
     public String toString() {
-        return "Contactos{" +
+        return "Contacto{" +
                 "nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", telefono='" + telefono + '\'' +
