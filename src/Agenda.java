@@ -26,9 +26,7 @@ public class Agenda {
         System.out.println("Contacto agregado correctamente.");
     }
 
-    // ==========================
-    // EXISTE CONTACTO
-    // ==========================
+
     public boolean existeContacto(Contacto contacto) {
         for (Contacto c : agenda) {
             if (c.getNombre().equalsIgnoreCase(contacto.getNombre())
@@ -38,10 +36,7 @@ public class Agenda {
         }
         return false;
     }
-
-    // ==========================
-    // LISTAR CONTACTOS
-    // ==========================
+    
     public void listarContacto() {
 
         if (agenda.isEmpty()) {

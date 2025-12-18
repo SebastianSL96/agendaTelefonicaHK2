@@ -42,7 +42,9 @@ public class MainAgenda {
                         String n = sc.nextLine();
                         System.out.print("Apellido: ");
                         String a = sc.nextLine();
-                        agenda.eliminarContacto(new Contacto(n, a, "1234567"));
+                        System.out.print("Teléfono: ");
+                        String t = sc.nextLine();
+                        agenda.eliminarContacto(new Contacto(n, a, t));
                     }
                     case 5 -> {
                         System.out.print("Nombre: ");
