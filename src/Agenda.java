@@ -1,33 +1,65 @@
 import java.util.*;
 
 public class Agenda {
-  List<Contacto> agenda = new ArrayList<>();
+    List<Contacto> agenda = new ArrayList<>();
 
     public void agregarContacto(Contacto contacto) {
-        boolean encontrado = false;
+        if (contacto == null) {
+            System.out.println("Contacto inválido");
+            return;
+        }
 
-        for (Contacto con : agenda) {
-            if (con.getNombre().equals(contacto.getNombre())){
-                System.out.println("Contacto ya existe.");
-                encontrado = true;
-                break;
+        if (agendaLlena()) {
+            System.out.println("Agenda llena. No hay espacio disponible.");
+            return;
+        }
+
+        for (Contacto c : agenda) {
+            if (c.getNombre().equalsIgnoreCase(contacto.getNombre())
+                    && c.getApellido().equalsIgnoreCase(contacto.getApellido())) {
+                System.out.println("El contacto ya existe.");
+                return;
             }
         }
 
-        if (!encontrado) {
-            if (agenda.size() < 3) {
-                agenda.add(contacto);
-                System.out.println("Contacto agregado.");
-            } else {
-                System.out.println("Agenda llena.");
-            }
-        }
+        agenda.add(contacto);
+        System.out.println("Contacto agregado correctamente.");
     }
 
+    // ==========================
+    // EXISTE CONTACTO
+    // ==========================
+    public boolean existeContacto(Contacto contacto) {
+        for (Contacto c : agenda) {
+            if (c.getNombre().equalsIgnoreCase(contacto.getNombre())
+                    && c.getApellido().equalsIgnoreCase(contacto.getApellido())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // ==========================
+    // LISTAR CONTACTOS
+    // ==========================
     public void listarContacto() {
-        agenda.sort(Comparator.comparing(Contacto::getNombre));
-        for (Contacto contacto : agenda) {
-            System.out.println(contacto.getNombre() + " " +contacto.getApellido() + " - " + contacto.getTelefono());
+
+        if (agenda.isEmpty()) {
+            System.out.println("Agenda vacía.");
+            return;
+        }
+
+        agenda.sort(
+                Comparator.comparing(Contacto::getNombre, String.CASE_INSENSITIVE_ORDER)
+                        .thenComparing(Contacto::getApellido, String.CASE_INSENSITIVE_ORDER)
+        );
+
+        for (Contacto c : agenda) {
+            System.out.println(
+                    c.getNombre() + " " +
+                            c.getApellido() + " - " +
+                            c.getTelefono()
+            );
         }
     }
 
@@ -84,7 +116,7 @@ public class Agenda {
         return agenda.size() >= 10;
     }
 
-    public int espacioLibres() {
+    public int espaciosLibres() {
         return 10 - agenda.size();
     }
 

@@ -15,13 +15,16 @@ public class Contacto {
 
         // El if valida el apellido no puede ser null ni vacio
         if (apellido == null || apellido.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nombre no puede estar vacio");
+            throw new IllegalArgumentException("Apellido no puede estar vacio");
         }
 
         // Valida que el telefono tenga 10 numeros
         if (!telefono.matches("\\d{10}")) {
             throw new IllegalArgumentException("Telefono debe tener 10 digitos");
         }
+        this.nombre = nombre.trim();
+        this.apellido = apellido.trim();
+        this.telefono = telefono;
     }
 
     // Getter de datos
@@ -37,17 +40,14 @@ public class Contacto {
         return telefono;
     }
 
+
     @Override
-    public boolean equals(Object o) {
-
-        if (this == o) return true;
-
-        if (o== null || getClass() !=o.getClass()) return false;
-
-        //Comparacion de nombres y apellidos
-        Contacto contacto =(Contacto) o;
-        return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
-
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (!(obj instanceof Contacto)) return false;
+        Contacto c = (Contacto) obj;
+        return nombre.equalsIgnoreCase(c.nombre)
+                && apellido.equalsIgnoreCase(c.apellido);
     }
 
     @Override
@@ -62,8 +62,16 @@ public class Contacto {
     // Genera hash basado en nombre y apellido
     @Override
     public int hashCode() {
-        return (nombre.toLowerCase() + apellido.toLowerCase()+ telefono.toLowerCase()).hashCode();
+        return (nombre.toLowerCase() + apellido.toLowerCase()).hashCode();
 
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 }
 

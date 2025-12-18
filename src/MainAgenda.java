@@ -35,7 +35,7 @@ public class MainAgenda {
                         String n = sc.nextLine();
                         System.out.print("Apellido: ");
                         String a = sc.nextLine();
-                        agenda.buscarContacto(n, a);
+                        agenda.buscarContacto(n);
                     }
                     case 4 -> {
                         System.out.print("Nombre: ");
