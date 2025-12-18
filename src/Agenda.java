@@ -45,4 +45,8 @@ public class Agenda {
             System.out.println("Contacto " + nombre + " no encontrado.");
         }
     }
+
+    public List<Contacto> getAgenda() {
+        return agenda;
+    }
 }

@@ -31,7 +31,7 @@ public class MainAgendaGUI extends JFrame {
         add(new JScrollPane(area), BorderLayout.CENTER);
         agregar.addActionListener(e -> {
             try {
-                agenda.añadirContacto(
+                agenda.agregarContacto(
                         new Contacto(
                                 nombre.getText(),
                                 apellido.getText(),
@@ -45,7 +45,7 @@ public class MainAgendaGUI extends JFrame {
         });
         listar.addActionListener(e -> {
             area.setText("");
-            agenda.getContactos().forEach(c -> area.append(c + "\n"));
+            agenda.getAgenda().forEach(c -> area.append(c + "\n"));
         });
     }
     
