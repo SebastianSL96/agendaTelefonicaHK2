@@ -6,7 +6,7 @@ public class MainAgendaGUI extends JFrame {
     private Agenda agenda;
     private JTextArea area;
 
-    public AgendaGUI() {
+    public MainAgendaGUI() {
         agenda = new Agenda();
         setTitle("Agenda Telefónica");
         setSize(400, 300);
@@ -50,6 +50,6 @@ public class MainAgendaGUI extends JFrame {
     }
     
     public static void main(String[] args) {
-        new AgendaGUI().setVisible(true);
+        new MainAgendaGUI().setVisible(true);
     }
 }
